@@ -20,5 +20,6 @@ export const northernCircuitPackage = {
         "Travel insurance",
         "Personal expenses",
         "Tips for guides and staff"
-    ]
+    ],
+    image: "Images/AdobeStock_26783446_Preview.jpeg"
 };
