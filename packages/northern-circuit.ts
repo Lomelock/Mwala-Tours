@@ -21,5 +21,17 @@ export const northernCircuitPackage = {
         "Personal expenses",
         "Tips for guides and staff"
     ],
-    image: "Images/AdobeStock_26783446_Preview.jpeg"
+    image: "Images/AdobeStock_26783446_Preview.jpeg",
+    activateMenu(menuId: string) {
+        const menu = document.getElementById(menuId);
+        if (menu) {
+            menu.style.display = "block";
+        }
+    },
+    hideMenu(menuId: string) {
+        const menu = document.getElementById(menuId);
+        if (menu) {
+            menu.style.display = "none";
+        }
+    }
 };
