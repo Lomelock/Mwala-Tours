@@ -92,7 +92,7 @@
                 padding: 50px; /* Add padding for spacing */
                 height: 100vh; /* Make the section fill the viewport height */
                 text-align: center;
-                animation: backgroundAnimation 10s infinite alternate; /* Add animation */
+                animation: none; /* Remove animation */
             }
 
             @keyframes backgroundAnimation {
@@ -202,6 +202,67 @@
 
             #packages p {
                 color: #4b0082; /* Indigo for the paragraph text */
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                body {
+                    font-size: 14px; /* Adjust font size for smaller screens */
+                }
+
+                header {
+                    padding: 20px; /* Add more padding for better spacing */
+                }
+
+                header img {
+                    height: 100px; /* Reduce logo size for mobile */
+                }
+
+                nav ul {
+                    display: flex;
+                    flex-direction: column; /* Stack navigation items vertically */
+                    align-items: center;
+                    gap: 10px; /* Add spacing between items */
+                }
+
+                nav ul li {
+                    margin: 0; /* Remove horizontal margins */
+                }
+
+                #home {
+                    padding: 20px; /* Reduce padding for smaller screens */
+                    height: auto; /* Allow content to adjust height */
+                }
+
+                #home h1 {
+                    font-size: 2em; /* Adjust font size for mobile */
+                }
+
+                #home p {
+                    font-size: 1.2em; /* Adjust paragraph font size */
+                }
+
+                .slideshow-container {
+                    width: 90%; /* Make slideshow take most of the screen width */
+                }
+
+                #about, #packages, #contact, #video {
+                    padding: 20px; /* Reduce padding for smaller screens */
+                }
+
+                #packages {
+                    background: linear-gradient(to bottom, #f0e68c, #ffa07a); /* Keep friendly background */
+                }
+
+                footer {
+                    font-size: 12px; /* Adjust footer font size */
+                    padding: 15px; /* Add padding for better spacing */
+                }
+
+                footer a {
+                    display: block; /* Stack social media links vertically */
+                    margin: 5px 0; /* Add spacing between links */
+                }
             }
         </style>
         <meta name="description" content="Discover the beauty of Tanzania with Natron Nomad Safaris. Explore safaris, wildlife, and cultural experiences.">
