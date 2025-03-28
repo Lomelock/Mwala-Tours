@@ -219,6 +219,7 @@
                     margin: 0; /* Remove default margin */
                     padding: 0; /* Remove default padding */
                     line-height: 1.6; /* Improve readability */
+                    overflow-x: hidden; /* Prevent horizontal scrolling */
                 }
 
                 header {
@@ -255,11 +256,12 @@
 
                 #home {
                     padding: 15px; /* Reduce padding for smaller screens */
-                    height: calc(100vh - 180px); /* Adjust height to fit between header and footer */
                     margin-top: 100px; /* Add margin to account for fixed header */
                     margin-bottom: 80px; /* Add margin to account for fixed footer */
-                    overflow-y: auto; /* Enable scrolling if content overflows */
+                    overflow-y: auto; /* Enable vertical scrolling if content overflows */
                     text-align: center; /* Center-align content */
+                    background-size: contain; /* Ensure background image fits within the section */
+                    height: auto; /* Allow height to adjust based on content */
                 }
 
                 #home h1 {
