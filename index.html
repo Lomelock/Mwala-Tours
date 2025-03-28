@@ -219,14 +219,18 @@
                 }
 
                 nav ul {
-                    display: flex;
-                    flex-direction: column; /* Stack navigation items vertically */
-                    align-items: center;
-                    gap: 10px; /* Add spacing between items */
+                    display: flex; /* Keep navigation items horizontal */
+                    flex-direction: row; /* Ensure horizontal layout */
+                    justify-content: center; /* Center the menu */
+                    gap: 5px; /* Add small spacing between items */
                 }
 
                 nav ul li {
                     margin: 0; /* Remove horizontal margins */
+                }
+
+                nav ul li button {
+                    font-size: 12px; /* Reduce font size for mobile */
                 }
 
                 #home {
@@ -248,10 +252,6 @@
 
                 #about, #packages, #contact, #video {
                     padding: 20px; /* Reduce padding for smaller screens */
-                }
-
-                #packages {
-                    background: linear-gradient(to bottom, #f0e68c, #ffa07a); /* Keep friendly background */
                 }
 
                 footer {
