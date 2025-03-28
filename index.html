@@ -10,6 +10,7 @@
                 background: linear-gradient(to bottom, #ff7e5f, #feb47b); /* Attractive orange-pink gradient */
                 margin: 0;
                 font-family: Arial, sans-serif;
+                overflow-x: hidden; /* Prevent horizontal scrolling */
             }
 
             /* Header styling */
@@ -75,6 +76,8 @@
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 background-color: white;
+                width: 100%; /* Ensure sections take full width */
+                box-sizing: border-box; /* Include padding and border in width */
             }
 
             /* Home Section Styling */
@@ -204,6 +207,11 @@
                 color: #4b0082; /* Indigo for the paragraph text */
             }
 
+            img {
+                max-width: 100%; /* Make all images responsive */
+                height: auto;
+            }
+
             /* Responsive Design */
             @media (max-width: 768px) {
                 body {
@@ -220,9 +228,9 @@
 
                 nav ul {
                     display: flex; /* Keep navigation items horizontal */
-                    flex-direction: row; /* Ensure horizontal layout */
-                    justify-content: center; /* Center the menu */
-                    gap: 5px; /* Add small spacing between items */
+                    flex-direction: column; /* Stack navigation items vertically */
+                    align-items: center; /* Center the menu */
+                    gap: 10px; /* Add spacing between items */
                 }
 
                 nav ul li {
@@ -257,6 +265,7 @@
                 footer {
                     font-size: 12px; /* Adjust footer font size */
                     padding: 15px; /* Add padding for better spacing */
+                    text-align: center; /* Center footer content */
                 }
 
                 footer a {
