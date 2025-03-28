@@ -10,7 +10,7 @@
                 background: linear-gradient(to bottom, #ff7e5f, #feb47b); /* Attractive orange-pink gradient */
                 margin: 0;
                 font-family: Arial, sans-serif;
-                overflow-x: hidden; /* Prevent horizontal scrolling */
+overflow-x: hidden; /* Prevent horizontal scrolling */
             }
 
             /* Header styling */
@@ -76,7 +76,7 @@
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 background-color: white;
-                width: 100%; /* Ensure sections take full width */
+width: 100%; /* Ensure sections take full width */
                 box-sizing: border-box; /* Include padding and border in width */
             }
 
@@ -228,9 +228,9 @@
 
                 nav ul {
                     display: flex; /* Keep navigation items horizontal */
-                    flex-direction: column; /* Stack navigation items vertically */
-                    align-items: center; /* Center the menu */
-                    gap: 10px; /* Add spacing between items */
+                    flex-direction: row; /* Ensure horizontal layout */
+                    justify-content: center; /* Center the menu */
+                    gap: 5px; /* Add small spacing between items */
                 }
 
                 nav ul li {
@@ -238,7 +238,7 @@
                 }
 
                 nav ul li button {
-                    font-size: 12px; /* Reduce font size for mobile */
+                    font-size: 12px; /* Reduce font size for better readability */
                 }
 
                 #home {
@@ -265,7 +265,7 @@
                 footer {
                     font-size: 12px; /* Adjust footer font size */
                     padding: 15px; /* Add padding for better spacing */
-                    text-align: center; /* Center footer content */
+text-align: center; /* Center footer content */
                 }
 
                 footer a {
@@ -324,19 +324,19 @@
     <body>
         <!-- Header Section -->
         <header>
-            <div style="text-align: center;">
+<div style="text-align: center;">
                 <!-- Centered Logo Section -->
-                <img src="Images/Natron Nomad Safaris logo.webp" alt="Natron Nomad Safaris Logo" style="height: 150px; margin-bottom: 10px;">
-                <h1>Welcome to Natron Nomad Safaris!</h1>
-            </div>
-            <!-- Language Dropdown -->
-            <div class="language-dropdown" style="position: absolute; top: 10px; right: 10px;">
-                <select onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                </select>
-            </div>
-            <nav>
+                                    <img src="Images/Natron Nomad Safaris logo.webp" alt="Natron Nomad Safaris Logo" style="height: 150px; margin-bottom: 10px;">
+            <h1>Welcome to Natron Nomad Safaris!</h1>
+</div>
+                <!-- Language Dropdown -->
+                <div class="language-dropdown" style="position: absolute; top: 10px; right: 10px;">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+                        <nav>
                 <ul>
                     <li><button onclick="toggleSection('home')">Home</button></li>
                     <li><button onclick="toggleSection('about')">About</button></li>
@@ -345,7 +345,7 @@
                     <li><button onclick="toggleBooking()">Book Now</button></li>
                 </ul>
             </nav>
-        </header>
+                    </header>
 
         <!-- Home Section -->
         <section id="home">
