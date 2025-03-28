@@ -262,10 +262,23 @@ width: 100%; /* Ensure sections take full width */
                     padding: 20px; /* Reduce padding for smaller screens */
                 }
 
+                #packages div {
+                    display: flex; /* Display packages horizontally */
+                    flex-direction: row; /* Ensure horizontal layout */
+                    flex-wrap: nowrap; /* Prevent wrapping */
+                    overflow-x: auto; /* Allow horizontal scrolling if needed */
+                    gap: 10px; /* Add spacing between packages */
+                }
+
+                #packages div > div {
+                    flex: 0 0 auto; /* Prevent packages from shrinking */
+                    width: 300px; /* Maintain consistent width */
+                }
+
                 footer {
                     font-size: 12px; /* Adjust footer font size */
                     padding: 15px; /* Add padding for better spacing */
-text-align: center; /* Center footer content */
+                    text-align: center; /* Center footer content */
                 }
 
                 footer a {
