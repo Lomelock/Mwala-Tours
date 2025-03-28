@@ -223,7 +223,7 @@
                 }
 
                 header {
-                    padding: 15px; /* Adjust padding for better spacing */
+                    padding: 10px; /* Adjust padding for better spacing */
                     margin: 0; /* Remove any margin */
                     width: 100%; /* Ensure header fills the width */
                     position: fixed; /* Fix header to the top */
@@ -232,17 +232,18 @@
                     background-color: red; /* Ensure consistent background color */
                     box-sizing: border-box; /* Include padding and border in width */
                     z-index: 1000; /* Ensure header stays above other content */
+                    height: auto; /* Allow height to adjust based on content */
                 }
 
                 header img {
-                    height: 80px; /* Reduce logo size for mobile */
+                    height: 60px; /* Reduce logo size for mobile */
                 }
 
                 nav ul {
                     display: flex; /* Keep navigation items horizontal */
                     flex-direction: row; /* Ensure horizontal layout */
                     justify-content: center; /* Center the menu */
-                    gap: 10px; /* Add spacing between items */
+                    gap: 5px; /* Add spacing between items */
                 }
 
                 nav ul li {
@@ -251,12 +252,12 @@
 
                 nav ul li button {
                     font-size: 12px; /* Reduce font size for better readability */
-                    padding: 5px 10px; /* Add padding for touch-friendly buttons */
+                    padding: 5px 8px; /* Add padding for touch-friendly buttons */
                 }
 
                 #home {
                     padding: 15px; /* Reduce padding for smaller screens */
-                    margin-top: 120px; /* Increase margin to account for fixed header */
+                    margin-top: 80px; /* Adjust margin to account for fixed header */
                     margin-bottom: 80px; /* Add margin to account for fixed footer */
                     overflow-y: auto; /* Enable vertical scrolling if content overflows */
                     text-align: center; /* Center-align content */
