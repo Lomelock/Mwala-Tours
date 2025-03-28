@@ -265,6 +265,17 @@ width: 100%; /* Ensure sections take full width */
                     padding: 20px; /* Reduce padding for smaller screens */
                 }
 
+                #packages div {
+                    display: flex; /* Display packages horizontally */
+                    flex-direction: column; /* Stack package information vertically */
+                    gap: 15px; /* Add spacing between packages */
+                }
+
+                #packages div > div {
+                    flex: 1 1 auto; /* Allow packages to adjust size */
+                    width: 100%; /* Ensure packages take full width */
+                }
+
                 footer {
                     font-size: 12px; /* Adjust footer font size */
                     padding: 15px; /* Add padding for better spacing */
