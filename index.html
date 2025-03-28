@@ -222,7 +222,12 @@ width: 100%; /* Ensure sections take full width */
                     padding: 20px; /* Add more padding for better spacing */
                     margin: 0; /* Remove any margin */
                     width: 100%; /* Ensure header fills the width */
+                    position: fixed; /* Fix header to the top */
+                    top: 0; /* Align header to the top */
+                    left: 0; /* Align header to the left edge */
+                    background-color: red; /* Ensure consistent background color */
                     box-sizing: border-box; /* Include padding and border in width */
+                    z-index: 1000; /* Ensure header stays above other content */
                 }
 
                 header img {
@@ -247,6 +252,7 @@ width: 100%; /* Ensure sections take full width */
                 #home {
                     padding: 20px; /* Reduce padding for smaller screens */
                     height: auto; /* Allow content to adjust height */
+                    margin-top: 120px; /* Add margin to account for fixed header */
                 }
 
                 #home h1 {
