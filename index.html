@@ -161,6 +161,32 @@
             #about {
                 background: linear-gradient(to bottom, yellow, orange); /* Yellow to orange gradient */
             }
+
+            /* Slideshow container */
+            .slideshow {
+                position: relative;
+                max-width: 600px; /* Adjusted max width for smaller size */
+                margin: 20px auto;
+            }
+
+            /* Slides */
+            .slide img {
+                width: 100%;
+                max-height: 300px; /* Limit height for friendly size */
+                object-fit: cover; /* Ensure images fit nicely */
+                border-radius: 10px;
+            }
+
+            /* Fade animation */
+            .fade {
+                animation: fadeEffect 3s infinite;
+            }
+
+            @keyframes fadeEffect {
+                0% { opacity: 0; }
+                50% { opacity: 1; }
+                100% { opacity: 0; }
+            }
         </style>
         <meta name="description" content="Discover the beauty of Tanzania with Natron Nomad Safaris. Explore safaris, wildlife, and cultural experiences.">
         <meta name="keywords" content="Tanzania, Safari, Serengeti, Ngorongoro, Lake Natron, Travel, Adventure">
@@ -194,11 +220,36 @@
                 }
             }
         </script>
+        <script>
+            let slideIndex = 0;
+            function showSlides() {
+                const slides = document.querySelectorAll('.slide');
+                slides.forEach((slide, index) => {
+                    slide.style.display = 'none';
+                });
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1; }
+                slides[slideIndex - 1].style.display = 'block';
+                setTimeout(showSlides, 3000); // Change image every 3 seconds
+            }
+            document.addEventListener('DOMContentLoaded', showSlides);
+        </script>
     </head>
     <body>
         <!-- Header Section -->
         <header>
-            <h1>Welcome to Natron Nomad Safaris!</h1>
+            <div style="text-align: center;">
+                <!-- Centered Logo Section -->
+                <img src="Images/Natron Nomad Safaris logo.webp" alt="Natron Nomad Safaris Logo" style="height: 150px; margin-bottom: 10px;">
+                <h1>Welcome to Natron Nomad Safaris!</h1>
+            </div>
+            <!-- Language Dropdown -->
+            <div class="language-dropdown" style="position: absolute; top: 10px; right: 10px;">
+                <select onchange="changeLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
             <nav>
                 <ul>
                     <li><button onclick="toggleSection('home')">Home</button></li>
@@ -208,13 +259,6 @@
                     <li><button onclick="toggleBooking()">Book Now</button></li>
                 </ul>
             </nav>
-            <!-- Language Dropdown -->
-            <div class="language-dropdown">
-                <select onchange="changeLanguage(this.value)">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                </select>
-            </div>
         </header>
 
         <!-- Home Section -->
@@ -225,7 +269,21 @@
                 experience the adventure of a lifetime. Relax on the pristine beaches of Zanzibar or immerse yourself in the vibrant culture 
                 of local communities. Your journey begins here.
             </p>
-            <img src="safari.jpg" alt="Safari in Tanzania with elephants" style="width: 100%; max-width: 800px; margin-top: 20px; border-radius: 10px;">
+            <!-- Removed the Safari with elephant content -->
+            <div class="slideshow">
+                <div class="slide fade">
+                    <img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Photo 1">
+                </div>
+                <div class="slide fade">
+                    <img src="omer-salom-gi6T2ktnpnE-unsplash.jpg" alt="Photo 2">
+                </div>
+                <div class="slide fade">
+                    <img src="pexels-balazsimon-15994102.jpg" alt="Photo 3">
+                </div>
+                <div class="slide fade">
+                    <img src="Images/AdobeStock_1053081199_Preview.jpeg" alt="Photo 4">
+                </div>
+            </div>
         </section>
 
         <!-- About Section -->
@@ -538,12 +596,21 @@
                 <br>Phone: +255 686644707
             <p>
         </section>
+
+        <!-- Video Section -->
+        <section id="video" class="hidden">
+            <h1>Watch Our Safari Video</h1>
+            <video controls width="600">
+                <source src="13349866_1920_1080_30fps.mp4" type="video/mp4">
+                <source src="13349866_1920_1080_30fps.mp4" type="video/webm">
+            </video>
+        </section>
     </body>
     <footer style="background-color: #333; color: white; text-align: center; padding: 10px; margin-top: 20px;">
         <p>&copy; 2025 Natron Nomad Safaris. All rights reserved.</p>
         <p>Email: info@natronnomadsafaris.com | Phone:+255 686644707</p>
         <p>Follow us on:
-            <a href="https://www.instagram.com/"leshushu laizer9090" style="color: yellow; text-decoration: none;">Instagram</a> |
+            <a href="https://www.instagram.com/"leshushu_laizer 9090" style="color: yellow; text-decoration: none;">Instagram</a> |
             <a href="#" style="color: yellow; text-decoration: none;">Facebook</a> |
             <a href="#" style="color: yellow; text-decoration: none;">Twitter</a>
         </p>
