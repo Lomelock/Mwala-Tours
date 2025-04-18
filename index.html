@@ -32,7 +32,7 @@
             /* Header styling */
             header {
                 width: 100%; /* Ensure the header spans the full width of the page */
-                box-sizing: border-box; /* Include padding and border in the width */
+                box-sizing: content-box; /* Include padding and border in the width */
                 background-color: red;
                 color: yellow;
                 padding: 10px;
@@ -251,7 +251,7 @@
                     top: 0; /* Align header to the top */
                     left: 0; /* Align header to the left edge */
                     background-color: red; /* Ensure consistent background color */
-                    box-sizing: border-box; /* Include padding and border in width */
+                    box-sizing:content-box; /* Include padding and border in width */
                     z-index: 1000; /* Ensure header stays above other content */
                     height: auto; /* Allow height to adjust based on content */
                     flex-direction: column;
@@ -315,15 +315,16 @@
 
                 footer {
                     font-size: 12px; /* Adjust footer font size */
-                    padding: 20px 0; /* Add padding for better spacing */
+                    padding: 20px 10px; /* Add padding for better spacing */
                     text-align: center; /* Center footer content */
                     margin-top: auto; /* Remove any margin */
                     width: 100%; /* Ensure footer fills the width */
-                    position: fixed; /* Fix footer to the bottom */
+                    position: flex; /* Fix footer to the bottom */
                     bottom: 0; /* Align footer to the bottom */
                     left: 0; /* Align footer to the left edge */
+                    right: 0; /* Align footer to the left edge
                     background-color: #333; /* Ensure consistent background color */
-                    box-sizing: border-box; /* Include padding and border in width */
+                    box-sizing: content-box; /* Include padding and border in width */
                 }
 
                 footer a {
@@ -832,7 +833,7 @@
         </section>
 
     </body>
-    <footer style="background-color: #333; color: white; text-align: center; padding: 10px; margin-top: 20px;">
+    <footer style="background-color: #333; color: white; text-align: center; padding: 10px 20px; margin-top: 20px;">
         <p>
             <br>Email: mwalasiatoi4@gmail.con
             <br>Phone: +255 789021754
