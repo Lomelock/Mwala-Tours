@@ -94,7 +94,12 @@
             }
 
             nav ul li button:hover {
-                text-decoration: underline;
+                text-decoration: none;
+            }
+
+            nav ul li a {
+                text-decoration: none; /* remove underline */
+                color: yellow;         /* set text color to yellow */
             }
 
             /* Section styling */
@@ -275,11 +280,11 @@
                     display: flex; /* Keep navigation items horizontal */
                     flex-direction: row; /* Ensure horizontal layout */
                     justify-content: center; /* Center the menu */
-                    gap: 5px; /* Add spacing between items */
+                    gap: 15px; /* increased gap for friendly spacing */
                 }
 
                 nav ul li {
-                    margin: 0; /* Remove horizontal margins */
+                    margin: 0 5px; /* add modest horizontal margin */
                 }
 
                 nav ul li button {
@@ -444,11 +449,13 @@
             </div>
             <nav>
                 <ul>
-                    <li><button onclick="toggleSection('home')">Home</button></li>
-                    <li><button onclick="toggleSection('about')">About</button></li>
-                    <li><button onclick="toggleSection('packages')">Packages</button></li> <!-- Added Packages Menu -->
-                    <li><button onclick="toggleSection('contact')">Contact</button></li>
-                    <li><button onclick="toggleBooking('Book Now')">Book Now</button></li>
+                    
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="booking.html">Book Now</a></li>
+        </ul>
                 </ul>
             </nav>
         </header>
