@@ -47,8 +47,59 @@
             
             }
 
+            .header-flex {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+    }
 
+    .logo-holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+        padding-top: 8px;
+        padding-bottom: 0;
+    }
 
+    .logo-holder img {
+        height: 96px;
+        width: 96px;
+        object-fit: contain;
+        border-radius: 16px;
+        background: #fff;
+        display: block;
+        margin: 0 auto;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
+        border: 2px solid #f7f7f7;
+        transition: box-shadow 0.2s;
+    }
+
+    .logo-holder img:hover {
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.10);
+    }
+
+    .header-title {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        font-size: 2.2em;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+        .logo-holder img {
+            height: 64px;
+            width: 64px;
+        }
+
+        .header-title {
+            font-size: 1.3em;
+        }
+    }
 
             /* Language dropdown styling */
             .language-dropdown {
@@ -381,6 +432,57 @@
                     font-size: 12px; /* Adjust link font size */
                 }
             }
+
+            /* Hamburger styles */
+            .hamburger {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 1100;
+            }
+            .hamburger span {
+                height: 4px;
+                width: 28px;
+                background: yellow;
+                margin: 4px 0;
+                border-radius: 2px;
+                display: block;
+                transition: 0.3s;
+            }
+
+            /* Hide nav by default on mobile */
+            @media (max-width: 768px) {
+                nav ul {
+                    display: none;
+                    flex-direction: column;
+                    background: red;
+                    position: absolute;
+                    top: 60px;
+                    left: 0;
+                    width: 100%;
+                    z-index: 1001;
+                    padding: 10px 0;
+                }
+                nav ul.show {
+                    display: flex;
+                }
+                .hamburger {
+                    display: flex;
+                }
+                .language-dropdown {
+                    top: 60px;
+                    right: 10px;
+                    z-index: 1101;
+                }
+            }
         </style>
         <meta name="description" content="Discover the beauty of Tanzania with Mwala Tours. Explore safaris, wildlife, and cultural experiences.">
         <meta name="keywords" content="Tanzania, Safari, Serengeti, Ngorongoro, Lake Natron, Travel, Adventure">
@@ -436,10 +538,24 @@
     <!-- End Google Tag Manager (noscript) -->
         <!-- Header Section -->
         <header>
-            
-            <div style="text-align: center;">
-                <h1>Welcome to Mwala Tours!</h1>
+            <div class="header-flex">
+                <!-- Hamburger Button -->
+                <button class="hamburger" id="hamburger" aria-label="Open navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <!-- Optional: keep the title centered for desktop, but on mobile it will be below -->
+                <div style="flex:1; text-align: center;">
+                    
+                </div>
             </div>
+            <!-- Centered Logo -->
+            <div class="logo-holder">
+                <img src="Mwala tours logo.jpg" alt="Mwala Tours Logo">
+            </div>
+            <!-- Title below logo -->
+            <h1 class="header-title">Welcome to Mwala Tours!</h1>
             <!-- Language Dropdown -->
             <div class="language-dropdown" style="position: absolute; top: 10px; right: 10px;">
                 <select onchange="changeLanguage(this.value)">
@@ -815,4 +931,20 @@
             }
         }
     </script>
+    <script>
+            // Hamburger toggle script
+            document.addEventListener('DOMContentLoaded', function() {
+                const hamburger = document.getElementById('hamburger');
+                const navUl = document.querySelector('nav ul');
+                hamburger.addEventListener('click', function() {
+                    navUl.classList.toggle('show');
+                });
+                // Optional: Hide menu when clicking a link (for SPA feel)
+                navUl.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navUl.classList.remove('show');
+                    });
+                });
+            });
+        </script>
 </html>
