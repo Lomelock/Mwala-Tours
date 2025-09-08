@@ -39,8 +39,8 @@
             header {
                 width: 100%; /* Ensure the header spans the full width of the page */
                 box-sizing: content-box; /* Include padding and border in the width */
-                background-color: red;
-                color: yellow;
+                background-color: #ff7e5f; /* Updated: deep orange to match site palette */
+                color: #fff; /* Updated: white text for contrast */
                 padding: 10px;
                 text-align: center;
                 position: flex;
@@ -896,41 +896,33 @@
 
         
         <!-- Contact Section -->
-       
-       
-        <section id="contact" class="hidden">
-
-
-            <h1>Contact</h1>
-            <p>Email: mwalasiatoi4@gmail.com</p>
-                
-            <p>Phone: +255 789021754</p>
+        <section id="contact" class="hidden" style="background: linear-gradient(135deg, #bfff00 0%, #00c3ff 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+            <div class="contact-card">
+                <h2>Contact Us</h2>
+                <form action="https://formspree.io/f/xblgvbol" method="POST" autocomplete="off">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder=" ">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder=" ">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="modern-btn">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> mwalasiatoi4@gmail.com</p>
+                    <p><strong>Phone:</strong> +255 789021754</p>
+                </div>
+            </div>
         </section>
-        <section id="contact" style="background-color: #333;
-        padding: 40px; text-align: center;background-color: #bfff00;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer ">
-            <h2>Contact Me</h2>
-            <form action="https://formspree.io/f/xblgvbol" method="POST">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" required>
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-          
-              <label for="message">Message:</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-          
-              <button type="submit">Send Message</button>
-            </form>
-          </section>
           
     </body>
     <footer style="background-color: #333; color: white; text-align: center; padding: 10px 20px; margin-top: 20px;">
-        <p>Email: mwalasiatoi4@gmail.con</p>
-        <p>Phone: +255 789021754</p>
         <p>&copy; 2025 Mwala Tours. All rights reserved.</p>
         <p>Powered by Singra Studio</p>
         </p>
@@ -963,4 +955,102 @@
                 });
             });
         </script>
+        <style>
+            .contact-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.10);
+    padding: 40px 32px 24px 32px;
+    max-width: 400px;
+    width: 100%;
+    margin: 32px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInUp 0.7s;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.contact-card h2 {
+    margin-bottom: 24px;
+    color: #2e8b57;
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.form-group {
+    position: relative;
+    margin-bottom: 28px;
+    width: 100%;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px 12px 16px 12px;
+    border: 1.5px solid #bfff00;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.03);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2e8b57;
+    background: #f7fff7;
+}
+.form-group label {
+    position: absolute;
+    left: 14px;
+    top: 16px;
+    background: #fff;
+    color: #888;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.2s;
+    padding: 0 4px;
+}
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -12px;
+    left: 10px;
+    font-size: 0.85em;
+    color: #2e8b57;
+    background: #fff;
+}
+.modern-btn {
+    background: linear-gradient(90deg, #2e8b57 60%, #bfff00 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(46,139,87,0.08);
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+}
+.modern-btn:hover {
+    background: linear-gradient(90deg, #bfff00 0%, #2e8b57 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+.contact-info {
+    margin-top: 24px;
+    font-size: 1em;
+    color: #333;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .contact-card {
+        padding: 20px 8px 16px 8px;
+        max-width: 98vw;
+    }
+}
+        </style>
 </html>
