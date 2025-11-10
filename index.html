@@ -63,8 +63,23 @@
 
 		/* ---------- Nav / Hamburger ---------- */
 		nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;justify-content:center}
-		nav a{color:rgba(255,255,255,.95);text-decoration:none;font-weight:600}
-		.hamburger{display:none;flex-direction:column;justify-content:center;width:40px;height:40px;background:transparent;border:none;cursor:pointer;position:absolute;top:10px;left:10px;z-index:1100}
+		nav a{color:#ffeb3b;text-decoration:none;font-weight:600} /* Changed to yellow */
+		.hamburger {
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			position: fixed; /* Change to fixed */
+			top: 20px;
+			left: 20px;
+			z-index: 2000; /* Increase z-index */
+			padding: 8px;
+		}
+
 		.hamburger span{height:4px;width:28px;background:#fff;margin:4px 0;border-radius:2px;display:block;transition:0.3s}
 
 		/* ---------- Sections ---------- */
@@ -107,8 +122,107 @@
 		.banner-summary{color:#444;line-height:1.6;margin-top:6px}
 
 		/* ---------- Packages / Cards ---------- */
-		.packages-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
-		.card{width:300px;background:#fafafa;padding:20px;border-radius:10px;box-shadow:0 6px 14px rgba(0,0,0,.06)}
+		.packages-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+			padding: 20px;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		.card {
+			background: linear-gradient(145deg, #ffffff, #f3f3f3);
+			border-radius: 20px;
+			padding: 0;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+			transition: all 0.3s ease;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+		}
+
+		.card .image-container {
+			display: flex;
+			gap: 4px;
+			height: 200px;
+			overflow: hidden;
+		}
+
+		.card .image-container img {
+			width: 50%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.5s ease;
+		}
+
+		.card:hover .image-container img {
+			transform: scale(1.1);
+		}
+
+		.card-content {
+			padding: 24px;
+		}
+
+		.card h2 {
+			color: var(--brand-2);
+			font-size: 1.5em;
+			margin: 0 0 12px 0;
+			font-weight: 600;
+		}
+
+		.card p {
+			color: #666;
+			font-size: 0.95em;
+			line-height: 1.6;
+			margin-bottom: 20px;
+		}
+
+		.card .view-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			background: var(--brand-2);
+			color: white;
+			padding: 12px 24px;
+			border-radius: 30px;
+			text-decoration: none;
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		.card .view-btn:hover {
+			background: #1a6540;
+			transform: translateX(6px);
+		}
+
+		.card .view-btn i {
+			transition: transform 0.3s ease;
+		}
+
+		.card .view-btn:hover i {
+			transform: translateX(4px);
+		}
+
+		/* Update package section heading styles */
+		#packages h1 {
+			font-size: 2.5em;
+			text-align: center;
+			color: var(--brand-2);
+			margin-bottom: 10px;
+		}
+
+		#packages > p {
+			text-align: center;
+			color: #666;
+			max-width: 600px;
+			margin: 0 auto 40px;
+			line-height: 1.6;
+		}
 
 		/* ---------- Contact (modern card) ---------- */
 		.contact-card{background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:40px 32px;max-width:420px;margin:16px auto;display:flex;flex-direction:column;align-items:stretch}
@@ -132,13 +246,95 @@
 			.banner-image{flex:0 0 200px;height:200px}
 		}
 		@media(max-width:720px){
-			nav ul{display:none}
-			.hamburger{display:flex}
-			.modern-banner{flex-direction:column}
-			.banner-image{width:100%;height:200px;flex:none}
-			.banner-content{padding:16px}
-			section{margin:12px;padding:14px}
-			.contact-card{padding:20px}
+			nav ul{
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
+				background: rgba(255, 235, 59, 0.95); /* Changed to semi-transparent yellow */
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 32px;
+				z-index: 1900;
+				transition: all 0.3s ease;
+			}
+			
+			nav ul.show {
+				display: flex;
+			}
+
+			nav ul li a {
+				font-size: 1.2em;
+				color: #333; /* Darker text for contrast on yellow background */
+			}
+
+			.hamburger {
+				display: flex;
+			}
+
+			/* Animate hamburger to X */
+			.hamburger.active span:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+			.hamburger.active span:nth-child(2) {
+				opacity: 0;
+			}
+			.hamburger.active span:nth-child(3) {
+				transform: rotate(-45deg) translate(7px, -7px);
+			}
+		}
+
+		/* Add this to your CSS section */
+		.card-meta {
+			display: flex;
+			gap: 15px;
+			color: var(--muted);
+			font-size: 0.9rem;
+			margin: 12px 0;
+		}
+
+		.card-meta span {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+
+		.card-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin: 12px 0;
+		}
+
+		.card-tags span {
+			background: #f0f8ff;
+			color: var(--brand-2);
+			padding: 6px 12px;
+			border-radius: 20px;
+			font-size: 0.85rem;
+		}
+
+		.wildlife-list {
+			margin: 12px 0;
+			padding: 12px;
+			background: rgba(46,139,87,0.05);
+			border-radius: 12px;
+		}
+
+		.wildlife-list h4 {
+			color: var(--brand-2);
+			margin: 0 0 8px 0;
+			font-size: 0.9rem;
+		}
+
+		.wildlife-list span {
+			display: inline-block;
+			margin-right: 12px;
+			color: #666;
+			font-size: 0.85rem;
 		}
 	</style>
 </head>
@@ -238,6 +434,44 @@
 					<p class="banner-summary">Discover surreal landscapes, flamingo colonies and cultural experiences. A great choice for adventurous travellers seeking off-the-beaten-path scenery.</p>
 				</div>
 			</article>
+
+			<!-- Add Lake Manyara -->
+			<article class="modern-banner" aria-labelledby="manyara-title">
+				<div class="banner-image"><img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara"></div>
+				<div class="banner-content">
+					<h3 id="manyara-title">Lake Manyara National Park</h3>
+					<div class="banner-meta">
+						<span><i class="fas fa-car"></i>&nbsp;~2 hrs from Arusha</span>
+						<span><i class="fas fa-map"></i>&nbsp;325 km²</span>
+					</div>
+					<div class="banner-tags">
+						<span class="tag">Tree-Climbing Lions</span>
+						<span class="tag">Bird Watching</span>
+						<span class="tag">Forest Walks</span>
+						<span class="tag">Lake Views</span>
+					</div>
+					<p class="banner-summary">Famous for its tree-climbing lions, vast flocks of flamingos, and diverse ecosystems from groundwater forest to acacia woodland.</p>
+				</div>
+			</article>
+
+			<!-- Add Tarangire -->
+			<article class="modern-banner" aria-labelledby="tarangire-title">
+				<div class="banner-image"><img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire National Park"></div>
+				<div class="banner-content">
+					<h3 id="tarangire-title">Tarangire National Park</h3>
+					<div class="banner-meta">
+						<span><i class="fas fa-car"></i>&nbsp;~3.5 hrs from Arusha</span>
+						<span><i class="fas fa-map"></i>&nbsp;2,850 km²</span>
+					</div>
+					<div class="banner-tags">
+						<span class="tag">Elephant Herds</span>
+						<span class="tag">Baobab Trees</span>
+						<span class="tag">Game Drives</span>
+						<span class="tag">River Valley</span>
+					</div>
+					<p class="banner-summary">Home to one of the largest elephant populations in Tanzania, set among iconic ancient baobab trees and winding river valleys.</p>
+				</div>
+			</article>
 		</div>
 	</section>
 
@@ -247,77 +481,202 @@
 		<p>Explore our exclusive safari packages designed to give you the best experience in Tanzania:</p>
 		<div class="packages-grid" aria-live="polite">
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="omer-salom-gi6T2ktnpnE-unsplash.jpg" alt="" style="width:48%;border-radius:8px">
-					<img src="jorge-tung-1pZJqQlgpsY-unsplash.jpg" alt="" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="omer-salom-gi6T2ktnpnE-unsplash.jpg" alt="Serengeti views">
+					<img src="jorge-tung-1pZJqQlgpsY-unsplash.jpg" alt="Serengeti wildlife">
 				</div>
-				<h2>Serengeti Adventure</h2>
-				<p style="opacity:.85">A 5-day safari exploring the Serengeti and witnessing the Great Migration.</p>
-				<a href="Itineraries/serengeti.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Serengeti Adventure</h2>
+					<div class="card-meta">
+						<span><i class="fas fa-clock"></i> 5 Days</span>
+						<span><i class="fas fa-map-marker-alt"></i> Serengeti</span>
+					</div>
+					<div class="card-tags">
+						<span>Game Drives</span>
+						<span>Great Migration</span>
+						<span>Photography</span>
+						<span>Camping</span>
+					</div>
+					<div class="wildlife-list">
+						<h4><i class="fas fa-paw"></i> Wildlife Highlights</h4>
+						<span>Lions</span>
+						<span>Elephants</span>
+						<span>Wildebeest</span>
+						<span>Zebras</span>
+						<span>Leopards</span>
+					</div>
+					<p>Experience the endless plains and witness the spectacular Great Migration through the Serengeti ecosystem.</p>
+					<a href="Itineraries/serengeti.html" target="_blank" class="view-btn">
+						View Itinerary <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
 			</div>
 
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="pexels-2150381842-31182909.jpg" alt="" style="width:48%;border-radius:8px">
-					<img src="pexels-2150381842-31182909.jpg" alt="" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="pexels-2150381842-31182909.jpg" alt="">
+					<img src="pexels-2150381842-31182909.jpg" alt="">
 				</div>
-				<h2>Trekking and Adventure</h2>
-				<p style="opacity:.85">Nature lovers and mountain climbers.</p>
-				<a href="Itineraries/trekking.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Trekking and Adventure</h2>
+					<p style="opacity:.85">Nature lovers and mountain climbers.</p>
+					<a href="Itineraries/trekking.html" target="_blank" class="view-btn">View Itinerary <i class="fas fa-arrow-right"></i></a>
+				</div>
 			</div>
 
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="Images/pexels-dirk-pothen-2149332904-31207738.jpg" alt="" style="width:48%;border-radius:8px">
-					<img src="Images/AdobeStock_1053081199_Preview.jpeg" alt="" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="Images/pexels-dirk-pothen-2149332904-31207738.jpg" alt="">
+					<img src="Images/AdobeStock_1053081199_Preview.jpeg" alt="">
 				</div>
-				<h2>Ngorongoro Experience</h2>
-				<p style="opacity:.85">Explore the Ngorongoro Crater - excellent for wildlife viewing and photography.</p>
-				<a href="Itineraries/ngorongoro.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Ngorongoro Experience</h2>
+					<div class="card-meta">
+						<span><i class="fas fa-clock"></i> 3 Days</span>
+						<span><i class="fas fa-map-marker-alt"></i> Ngorongoro Crater</span>
+					</div>
+					<div class="card-tags">
+						<span>Crater Safari</span>
+						<span>Cultural Tours</span>
+						<span>Walking Safari</span>
+						<span>Photography</span>
+					</div>
+					<div class="wildlife-list">
+						<h4><i class="fas fa-paw"></i> Wildlife Highlights</h4>
+						<span>Black Rhino</span>
+						<span>Lions</span>
+						<span>Flamingos</span>
+						<span>Hippos</span>
+					</div>
+					<p>Explore the world's largest intact volcanic caldera and its diverse wildlife.</p>
+					<a href="Itineraries/ngorongoro.html" target="_blank" class="view-btn">
+						View Itinerary <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
 			</div>
 
 			<!-- Added: Lake Manyara -->
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara" style="width:48%;border-radius:8px">
-					<img src="Images/AdobeStock_71303000_Preview.jpeg" alt="Lake Manyara" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara">
+					<img src="Images/AdobeStock_71303000_Preview.jpeg" alt="Lake Manyara">
 				</div>
-				<h2>Lake Manyara Escape</h2>
-				<p style="opacity:.85">A 2-day trip to see tree-climbing lions and vibrant birdlife at Lake Manyara.</p>
-				<a href="Itineraries/Manyara.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Lake Manyara Escape</h2>
+					<div class="card-meta">
+						<span><i class="fas fa-clock"></i> 2 Days</span>
+						<span><i class="fas fa-map-marker-alt"></i> Lake Manyara</span>
+					</div>
+					<div class="card-tags">
+						<span>Wildlife Safari</span>
+						<span>Bird Watching</span>
+						<span>Nature Walks</span>
+					</div>
+					<div class="wildlife-list">
+						<h4><i class="fas fa-paw"></i> Wildlife Highlights</h4>
+						<span>Tree-Climbing Lions</span>
+						<span>Flamingos</span>
+						<span>Elephants</span>
+						<span>Giraffes</span>
+					</div>
+					<p>Experience the unique ecosystem of Lake Manyara, famous for its tree-climbing lions and diverse bird species.</p>
+					<a href="Itineraries/Manyara.html" target="_blank" class="view-btn">
+						View Itinerary <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
 			</div>
 
 			<!-- Added: Tarangire -->
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire" style="width:48%;border-radius:8px">
-					<img src="Images/tanzania-wild-sky-NHQOJBbJgdk-unsplash.jpg" alt="Tarangire" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire">
+					<img src="Images/tanzania-wild-sky-NHQOJBbJgdk-unsplash.jpg" alt="Tarangire">
 				</div>
-				<h2>Tarangire Expedition</h2>
-				<p style="opacity:.85">A 3-day journey to explore baobab forests and large elephant herds in Tarangire National Park.</p>
-				<a href="Itineraries/Tarangire.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Tarangire Expedition</h2>
+					<div class="card-meta">
+						<span><i class="fas fa-clock"></i> 3 Days</span>
+						<span><i class="fas fa-map-marker-alt"></i> Tarangire National Park</span>
+					</div>
+					<div class="card-tags">
+						<span>Wildlife Safari</span>
+						<span>Baobab Trees</span>
+						<span>Photography</span>
+					</div>
+					<div class="wildlife-list">
+						<h4><i class="fas fa-paw"></i> Wildlife Highlights</h4>
+						<span>Elephants</span>
+						<span>Giraffes</span>
+						<span>Buffalos</span>
+						<span>Ostriches</span>
+					</div>
+					<p>Discover the diverse landscapes of Tarangire, known for its large elephant herds and iconic baobab trees.</p>
+					<a href="Itineraries/Tarangire.html" target="_blank" class="view-btn">
+						View Itinerary <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
 			</div>
 
 			<!-- Added: Natron -->
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="pexels-balazsimon-15994102.jpg" alt="Lake Natron" style="width:48%;border-radius:8px">
-					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Lake Natron" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="pexels-balazsimon-15994102.jpg" alt="Lake Natron">
+					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Lake Natron">
 				</div>
-				<h2>Natron Adventure</h2>
-				<p style="opacity:.85">A 4-day exploration of Lake Natron's stunning landscapes and flamingo breeding grounds.</p>
-				<a href="Itineraries/lake-natron.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Natron Adventure</h2>
+					<div class="card-meta">
+						<span><i class="fas fa-clock"></i> 4 Days</span>
+						<span><i class="fas fa-map-marker-alt"></i> Lake Natron</span>
+					</div>
+					<div class="card-tags">
+						<span>Flamingo Watching</span>
+						<span>Hiking</span>
+						<span>Waterfall Visits</span>
+						<span>Maasai Culture</span>
+					</div>
+					<div class="wildlife-list">
+						<h4><i class="fas fa-paw"></i> Wildlife Highlights</h4>
+						<span>Flamingos</span>
+						<span>Pelicans</span>
+						<span>Maasai Giraffes</span>
+						<span>Grant's Gazelles</span>
+					</div>
+					<p>Explore the stunning landscapes of Lake Natron, a haven for birdwatchers and nature enthusiasts.</p>
+					<a href="Itineraries/lake-natron.html" target="_blank" class="view-btn">
+						View Itinerary <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
 			</div>
 
 			<!-- Added: Northern Circuit -->
 			<div class="card">
-				<div style="display:flex;gap:8px;margin-bottom:8px">
-					<img src="Images/jorge-tung--5Betfvtgso-unsplash.jpg" alt="Northern Circuit" style="width:48%;border-radius:8px">
-					<img src="Images/uzuri-safaris-tanzania-dpoOaYVzMuI-unsplash.jpg" alt="Northern Circuit" style="width:48%;border-radius:8px">
+				<div class="image-container">
+					<img src="Images/jorge-tung--5Betfvtgso-unsplash.jpg" alt="Northern Circuit">
+					<img src="Images/uzuri-safaris-tanzania-dpoOaYVzMuI-unsplash.jpg" alt="Northern Circuit">
 				</div>
-				<h2>Northern Circuit Package</h2>
-				<p style="opacity:.85">A 7-day safari covering Serengeti, Ngorongoro, Tarangire and Lake Manyara — ideal for first-time visitors.</p>
-				<a href="Itineraries/northern-circuit.html" target="_blank" style="display:inline-block;background:var(--brand-2);color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none;margin-top:10px">View Itinerary</a>
+				<div class="card-content">
+					<h2>Northern Circuit Package</h2>
+					<div class="card-meta">
+						<span><i class="fas fa-clock"></i> 7 Days</span>
+						<span><i class="fas fa-map-marker-alt"></i> Northern Tanzania</span>
+					</div>
+					<div class="card-tags">
+						<span>Comprehensive Safari</span>
+						<span>All-Inclusive</span>
+						<span>Luxury Lodging</span>
+					</div>
+					<div class="wildlife-list">
+						<h4><i class="fas fa-paw"></i> Wildlife Highlights</h4>
+						<span>Big Five</span>
+						<span>Flamingos</span>
+						<span>Various Antelope Species</span>
+					</div>
+					<p>The ultimate Tanzanian safari experience, covering all major parks and attractions in the north.</p>
+					<a href="Itineraries/northern-circuit.html" target="_blank" class="view-btn">
+						View Itinerary <i class="fas fa-arrow-right"></i>
+					</a>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -378,14 +737,39 @@
 		}
 
 		// Hamburger toggle and nav link behavior
-		document.addEventListener('DOMContentLoaded',function(){
-			const hamburger=document.getElementById('hamburger');
-			const navUl=document.querySelector('nav ul');
-			if(hamburger && navUl){
-				hamburger.addEventListener('click', ()=> navUl.classList.toggle('show'));
-				navUl.querySelectorAll('a').forEach(link => link.addEventListener('click', ()=> navUl.classList.remove('show')));
+		function initHamburger() {
+			const hamburger = document.getElementById('hamburger');
+			const nav = document.querySelector('nav ul');
+			
+			if (hamburger && nav) {
+				hamburger.addEventListener('click', () => {
+					hamburger.classList.toggle('active');
+					nav.classList.toggle('show');
+					// Prevent body scroll when menu is open
+					document.body.style.overflow = nav.classList.contains('show') ? 'hidden' : '';
+				});
+
+				// Close menu when clicking a link
+				nav.querySelectorAll('a').forEach(link => {
+					link.addEventListener('click', () => {
+						hamburger.classList.remove('active');
+						nav.classList.remove('show');
+						document.body.style.overflow = '';
+					});
+				});
+
+				// Close menu when clicking outside
+				document.addEventListener('click', (e) => {
+					if (!hamburger.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('show')) {
+						hamburger.classList.remove('active');
+						nav.classList.remove('show');
+						document.body.style.overflow = '';
+					}
+				});
 			}
-		});
+		}
+
+		document.addEventListener('DOMContentLoaded', initHamburger);
 	</script>
 </body>
 </html>
