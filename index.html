@@ -28,11 +28,24 @@
 		gtag('config', 'G-QGF113D9N5');
 	</script>
 
-	<!-- Font Awesome for icons -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<!-- Add preconnect and preload hints for faster loading -->
+	<link rel="preconnect" href="https://www.googletagmanager.com">
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+	<!-- Font Awesome - load async -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" media="print" onload="this.media='all'">
+	<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"></noscript>
 
 	<!-- Favicon -->
-	<link rel="icon" href="Mwala tours logo.jpg" type="image/jpeg">
+	<!-- Preferred favicons (place files at site root). Fallback to existing JPG if not present. -->
+	<link rel="icon" href="/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<!-- Fallback to site logo if above files are missing -->
+	<link rel="alternate icon" href="Mwala tours logo.jpg" type="image/jpeg">
 
 	<style>
 		/* ---------- Base ---------- */
@@ -56,8 +69,60 @@
 		}
 		.header-flex{display:flex;align-items:center;justify-content:flex-start;position:relative}
 		.logo-holder{display:flex;justify-content:center;align-items:center;margin:0 auto;width:100%;padding-top:8px}
-		.logo-holder img{height:96px;width:96px;object-fit:contain;border-radius:16px;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.1);border:2px solid #f7f7f7;transition:box-shadow .2s}
-		.header-title{margin:8px 0 0;padding:0;font-size:2.2em;font-weight:700;letter-spacing:1px;color:#fff}
+		.logo-holder img{
+			height:96px;
+			width:96px;
+			object-fit:contain;
+			border-radius:16px;
+			background:#fff;
+			box-shadow:0 4px 24px rgba(0,0,0,.1);
+			border:2px solid #f7f7f7;
+			transition:box-shadow .2s;
+			animation: logoBounce 3s ease-in-out infinite, logoGlow 3s ease-in-out infinite;
+		}
+
+		@keyframes logoBounce {
+			0%, 100% { transform: translateY(0) scale(1); }
+			50% { transform: translateY(-12px) scale(1.05); }
+		}
+
+		@keyframes logoGlow {
+			0%, 100% { box-shadow: 0 4px 24px rgba(0,0,0,0.1); }
+			50% { box-shadow: 0 8px 32px rgba(255,126,95,0.3), 0 0 20px rgba(46,139,87,0.15); }
+		}
+
+		.logo-holder img:hover {
+			box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 2px 12px rgba(0,0,0,.10);
+			animation: none;
+		}
+		.header-title{
+			margin:8px 0 0;
+			padding:0;
+			font-size:2.2em;
+			font-weight:700;
+			letter-spacing:1px;
+			color:#fff;
+			animation: titleColorShift 4s ease-in-out infinite;
+		}
+
+		@keyframes titleColorShift {
+			0%, 100% { 
+				color: #fff;
+				text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+			}
+			25% { 
+				color: #ffeb3b;
+				text-shadow: 0 2px 12px rgba(255,235,59,0.3);
+			}
+			50% { 
+				color: #fff;
+				text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+			}
+			75% { 
+				color: #bfff00;
+				text-shadow: 0 2px 12px rgba(191,255,0,0.3);
+			}
+		}
 		.language-dropdown{position:absolute;top:10px;right:10px}
 		.language-dropdown select{padding:6px 8px;background:blue;color:#fff;border:none;border-radius:6px;cursor:pointer}
 
@@ -242,21 +307,76 @@
 		}
 
 		/* ---------- Contact (modern card) ---------- */
-		.contact-card{background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,.12);padding:40px 32px;max-width:420px;margin:16px auto;display:flex;flex-direction:column;align-items:stretch}
-		.contact-card h2{color:var(--brand-2);margin:0 0 18px;font-size:1.6rem}
-		.form-group{position:relative;margin-bottom:20px}
-		.form-group input,.form-group textarea{width:100%;padding:14px;border:1.5px solid #bfff00;border-radius:8px;background:rgba(0,0,0,.03);outline:none;font-size:1rem;resize:none}
-		.form-group label{position:absolute;left:12px;top:12px;background:#fff;color:#888;padding:0 6px;transition:.18s}
-		.form-group input:focus,.form-group textarea:focus{border-color:var(--brand-2);background:#f7fff7}
-		.form-group input:focus+label,.form-group input:not(:placeholder-shown)+label,
-		.form-group textarea:focus+label,.form-group textarea:not(:placeholder-shown)+label{
-			top:-10px;font-size:0.85rem;color:var(--brand-2)
+		.contact-card{
+			background:#fff;
+			border-radius:18px;
+			box-shadow:0 10px 40px rgba(0,0,0,.12);
+			padding:28px;
+			max-width:760px;
+			margin:16px auto;
+			display:grid;
+			grid-template-columns:1fr 320px;
+			gap:18px;
+			align-items:start;
 		}
-		.modern-btn{background:linear-gradient(90deg,var(--brand-2) 60%,#bfff00 100%);color:#fff;border:none;border-radius:8px;padding:12px 18px;font-weight:600;cursor:pointer}
-		.contact-info{margin-top:14px;color:#333;text-align:center}
 
-		/* ---------- Footer ---------- */
-		footer{background:#333;color:#fff;text-align:center;padding:12px 18px;margin-top:14px}
+		@media(max-width:880px){
+			.contact-card{grid-template-columns:1fr; padding:20px;}
+		}
+		.contact-card h2{grid-column:1/ -1;color:var(--brand-2);margin:0 0 8px;font-size:1.5rem}
+
+		/* Form column */
+		.contact-form{display:flex;flex-direction:column;gap:12px}
+
+		/* compact inputs */
+		.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+		@media(max-width:520px){ .form-row{grid-template-columns:1fr} }
+
+		.input, textarea{
+			width:100%;
+			padding:12px 14px;
+			border-radius:10px;
+			border:1.25px solid rgba(0,0,0,0.08);
+			background: #fff;
+			font-size:1rem;
+			resize:vertical;
+			outline:none;
+			transition:box-shadow .15s, border-color .15s, transform .08s;
+		}
+
+		.input:focus, textarea:focus{
+			border-color: var(--brand-2);
+			box-shadow: 0 6px 18px rgba(46,139,87,0.06);
+			transform: translateY(-1px);
+		}
+
+		/* labels (visually hidden if placeholders used, keep for accessibility) */
+		.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+		/* right column (contact details) */
+		.contact-info-box{background:linear-gradient(180deg,#fcfff8,#f7fff7);padding:18px;border-radius:12px}
+		.contact-info-box p{margin:8px 0;color:#333}
+		.contact-info-box .meta{color:var(--muted);font-size:0.95rem;}
+
+		/* submit */
+		.btn-send{
+			background:linear-gradient(90deg,var(--brand-2) 60%,#bfff00 100%);
+			color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer;
+			box-shadow:0 8px 20px rgba(46,139,87,0.12);
+			display:inline-flex;align-items:center;gap:10px;
+		}
+
+		/* small status/messages */
+		.form-status{grid-column:1/-1;padding:10px;border-radius:8px;font-weight:600;display:none}
+		.form-status.success{background:#e9fbf0;color:#066032;display:block}
+		.form-status.error{background:#fff1f0;color:#922;display:block}
+
+		/* inline field error */
+		.field-error{color:#d64545;font-size:0.85rem;margin-top:6px;display:none}
+
+		/* spinner */
+		.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,0.35);border-top-color:rgba(255,255,255,0.9);border-radius:50%;animation:spin .8s linear infinite}
+		@keyframes spin{to{transform:rotate(360deg)}}
 
 		/* ---------- Responsive ---------- */
 		@media(max-width:900px){
@@ -264,19 +384,8 @@
 		}
 		@media(max-width:720px){
 			nav ul{
-				display: none;
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
-				background: rgba(255, 235, 59, 0.95); /* Changed to semi-transparent yellow */
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				gap: 32px;
-				z-index: 1900;
-				transition: all 0.3s ease;
+				display: none; position: fixed; top: 0;left: 0; width: 100%; height: 100vh;background: rgba(255, 235, 59, 0.95); /* Changed to semi-transparent yellow */flex-direction: column;
+				justify-content: center; align-items: center;gap: 32px; z-index: 1900; transition: all 0.3s ease;
 			}
 			
 			nav ul.show {
@@ -413,6 +522,19 @@
 			color: #666;
 			font-size: 0.85rem;
 		}
+
+		/* Add containment to improve rendering performance */
+		section { contain: layout style paint; }
+		.card { contain: layout style paint; }
+		.modern-banner { contain: layout style paint; }
+
+		/* Optimize animations - use transform instead of expensive properties */
+		.card:hover { will-change: transform, box-shadow; }
+		.modern-banner:hover .banner-image img { will-change: transform; }
+
+		/* Reduce repaints */
+		.banner-image img { backface-visibility: hidden; transform: translateZ(0); }
+		.card .image-container img { backface-visibility: hidden; }
 	</style>
 </head>
 
@@ -426,7 +548,7 @@
 			<button class="hamburger" id="hamburger" aria-label="Open navigation"><span></span><span></span><span></span></button>
 		</div>
 
-		<div class="logo-holder"><img src="Mwala tours logo.jpg" alt="Mwala Tours Logo"></div>
+		<div class="logo-holder"><img src="Mwala tours logo.jpg" alt="Mwala Tours Logo" loading="lazy" decoding="async"></div>
 		<h1 class="header-title">Welcome to Mwala Tours!</h1>
 
 		<div class="language-dropdown"><select onchange="changeLanguage(this.value)"><option value="en">English</option><option value="es">Español</option></select></div>
@@ -444,17 +566,6 @@
 		</div>
 	</section>
 
-	<script>
-		// hero background slideshow
-		(function(){
-			const images=["Mwala tours logo.jpg","omer-salom-gi6T2ktnpnE-unsplash.jpg","pexels-balazsimon-15994102.jpg","jorge-tung-1pZJqQlgpsY-unsplash.jpg","jorge-tung--5Betfvtgso-unsplash.jpg"];
-			let idx=0; const home=document.getElementById('home');
-			function setBg(){ if(home) home.style.backgroundImage=`url('${images[idx]}')`; }
-			function nextBg(){ idx=(idx+1)%images.length; setBg(); }
-			setBg(); setInterval(nextBg,3500);
-		})();
-	</script>
-
 	<!-- About -->
 	<section id="about">
 		<h1 style="text-align:center;font-size:2.2rem;margin-bottom:12px">About Us</h1>
@@ -466,13 +577,33 @@
 		</div>
 
 		<div style="max-width:1200px;margin:18px auto;padding:12px">
-			<h2 style="color:var(--brand-1);font-size:1.4rem;margin-bottom:8px">Why Choose Us?</h2>
-			<ul style="line-height:1.8;padding-left:20px">
-				<li><strong>Expert Guides:</strong> Our experienced guides are passionate about sharing their knowledge.</li>
-				<li><strong>Tailored Experiences:</strong> Customizable itineraries to suit your preferences.</li>
-				<li><strong>Luxury Accommodations:</strong> Handpicked lodges and camps.</li>
-				<li><strong>Commitment to Sustainability:</strong> Eco-friendly practices and local support.</li>
-			</ul>
+			<h2 style="color:var(--brand-1);font-size:1.8rem;margin-bottom:24px;text-align:center">Why Choose Us?</h2>
+			<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+				<!-- Card 1: Expert Guides -->
+				<div style="background:linear-gradient(135deg,#fff7f0,#fffaf6);border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(255,126,95,0.08);transition:all 0.3s ease">
+					<div style="font-size:2.5rem;margin-bottom:12px;color:var(--brand-1)"><i class="fas fa-binoculars"></i></div>
+					<h3 style="color:var(--brand-2);margin:0 0 8px;font-size:1.1rem">Expert Guides</h3>
+					<p style="color:#666;line-height:1.6;margin:0">Our experienced guides are passionate about sharing their knowledge and ensuring unforgettable safari moments.</p>
+				</div>
+				<!-- Card 2: Tailored Experiences -->
+				<div style="background:linear-gradient(135deg,#f0f8ff,#f6fbff);border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(46,139,87,0.08);transition:all 0.3s ease">
+					<div style="font-size:2.5rem;margin-bottom:12px;color:var(--brand-2)"><i class="fas fa-map"></i></div>
+					<h3 style="color:var(--brand-2);margin:0 0 8px;font-size:1.1rem">Tailored Experiences</h3>
+					<p style="color:#666;line-height:1.6;margin:0">Customizable itineraries designed specifically for your preferences and travel style.</p>
+				</div>
+				<!-- Card 3: Luxury Accommodations -->
+				<div style="background:linear-gradient(135deg,#fef9f0,#fffbf6);border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(255,126,95,0.08);transition:all 0.3s ease">
+					<div style="font-size:2.5rem;margin-bottom:12px;color:var(--brand-1)"><i class="fas fa-bed"></i></div>
+					<h3 style="color:var(--brand-2);margin:0 0 8px;font-size:1.1rem">Luxury Accommodations</h3>
+					<p style="color:#666;line-height:1.6;margin:0">Handpicked lodges and boutique camps offering comfort and authentic African experiences.</p>
+				</div>
+				<!-- Card 4: Sustainability -->
+				<div style="background:linear-gradient(135deg,#f0fff4,#f6fef9);border-radius:16px;padding:24px;box-shadow:0 6px 20px rgba(46,139,87,0.08);transition:all 0.3s ease">
+					<div style="font-size:2.5rem;margin-bottom:12px;color:var(--brand-2)"><i class="fas fa-leaf"></i></div>
+					<h3 style="color:var(--brand-2);margin:0 0 8px;font-size:1.1rem">Sustainable Tourism</h3>
+					<p style="color:#666;line-height:1.6;margin:0">Eco-friendly practices and direct support to local communities and conservation efforts.</p>
+				</div>
+			</div>
 		</div>
 
 		<!-- Destinations: Modern banners with left images -->
@@ -481,7 +612,7 @@
 		<div class="destinations-wrapper">
 			<!-- Serengeti -->
 			<article class="modern-banner" aria-labelledby="serengeti-title">
-				<div class="banner-image"><img src="jorge-tung-1pZJqQlgpsY-unsplash.jpg" alt="Serengeti National Park"></div>
+				<div class="banner-image"><img src="jorge-tung-1pZJqQlgpsY-unsplash.jpg" alt="Serengeti National Park" loading="lazy" decoding="async"></div>
 				<div class="banner-content">
 					<h3 id="serengeti-title">Serengeti National Park</h3>
 					<div class="banner-meta"><span><i class="fas fa-car"></i>&nbsp;~8 hrs from Arusha</span><span><i class="fas fa-map"></i>&nbsp;14,750 km²</span></div>
@@ -492,7 +623,7 @@
 
 			<!-- Ngorongoro -->
 			<article class="modern-banner" aria-labelledby="ngorongoro-title">
-				<div class="banner-image"><img src="Images/ana-singh-1vOBJZ6228U-unsplash.jpg" alt="Ngorongoro Crater"></div>
+				<div class="banner-image"><img src="Images/ana-singh-1vOBJZ6228U-unsplash.jpg" alt="Ngorongoro Crater" loading="lazy" decoding="async"></div>
 				<div class="banner-content">
 					<h3 id="ngorongoro-title">Ngorongoro Crater</h3>
 					<div class="banner-meta"><span><i class="fas fa-car"></i>&nbsp;~4 hrs from Arusha</span><span><i class="fas fa-map"></i>&nbsp;8,292 km²</span></div>
@@ -503,7 +634,7 @@
 
 			<!-- Lake Natron -->
 			<article class="modern-banner" aria-labelledby="natron-title">
-				<div class="banner-image"><img src="pexels-balazsimon-15994102.jpg" alt="Lake Natron"></div>
+				<div class="banner-image"><img src="pexels-balazsimon-15994102.jpg" alt="Lake Natron" loading="lazy" decoding="async"></div>
 				<div class="banner-content">
 					<h3 id="natron-title">Lake Natron</h3>
 					<div class="banner-meta"><span><i class="fas fa-car"></i>&nbsp;~6 hrs from Arusha</span><span><i class="fas fa-map"></i>&nbsp;1,040 km²</span></div>
@@ -514,7 +645,7 @@
 
 			<!-- Add Lake Manyara -->
 			<article class="modern-banner" aria-labelledby="manyara-title">
-				<div class="banner-image"><img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara"></div>
+				<div class="banner-image"><img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara" loading="lazy" decoding="async"></div>
 				<div class="banner-content">
 					<h3 id="manyara-title">Lake Manyara National Park</h3>
 					<div class="banner-meta">
@@ -527,13 +658,13 @@
 						<span class="tag">Forest Walks</span>
 						<span class="tag">Lake Views</span>
 					</div>
-					<p class="banner-summary">Famous for its tree-climbing lions, vast flocks of flamingos, and diverse ecosystems from groundwater forest to acacia woodland.</p>
+					<p class="banner-summary">Famous for its tree-climbing lions, vast flocks of flamingos, and diverse ecosystems from groundwater forest to ac
 				</div>
 			</article>
 
 			<!-- Add Tarangire -->
 			<article class="modern-banner" aria-labelledby="tarangire-title">
-				<div class="banner-image"><img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire National Park"></div>
+				<div class="banner-image"><img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire National Park" loading="lazy" decoding="async"></div>
 				<div class="banner-content">
 					<h3 id="tarangire-title">Tarangire National Park</h3>
 					<div class="banner-meta">
@@ -559,8 +690,8 @@
 		<div class="packages-grid" aria-live="polite">
 			<div class="card">
 				<div class="image-container">
-					<img src="omer-salom-gi6T2ktnpnE-unsplash.jpg" alt="Serengeti views">
-					<img src="jorge-tung-1pZJqQlgpsY-unsplash.jpg" alt="Serengeti wildlife">
+					<img src="omer-salom-gi6T2ktnpnE-unsplash.jpg" alt="Serengeti views" loading="lazy" decoding="async">
+					<img src="jorge-tung-1pZJqQlgpsY-unsplash.jpg" alt="Serengeti wildlife" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Serengeti Adventure</h2>
@@ -591,8 +722,8 @@
 
 			<div class="card">
 				<div class="image-container">
-					<img src="pexels-2150381842-31182909.jpg" alt="">
-					<img src="pexels-2150381842-31182909.jpg" alt="">
+					<img src="pexels-2150381842-31182909.jpg" alt="" loading="lazy" decoding="async">
+					<img src="pexels-2150381842-31182909.jpg" alt="" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Trekking and Adventure</h2>
@@ -603,8 +734,8 @@
 
 			<div class="card">
 				<div class="image-container">
-					<img src="Images/pexels-dirk-pothen-2149332904-31207738.jpg" alt="">
-					<img src="Images/AdobeStock_1053081199_Preview.jpeg" alt="">
+					<img src="Images/pexels-dirk-pothen-2149332904-31207738.jpg" alt="" loading="lazy" decoding="async">
+					<img src="Images/AdobeStock_1053081199_Preview.jpeg" alt="" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Ngorongoro Experience</h2>
@@ -635,8 +766,8 @@
 			<!-- Added: Lake Manyara -->
 			<div class="card">
 				<div class="image-container">
-					<img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara">
-					<img src="Images/AdobeStock_71303000_Preview.jpeg" alt="Lake Manyara">
+					<img src="jorge-tung--5Betfvtgso-unsplash.jpg" alt="Lake Manyara" loading="lazy" decoding="async">
+					<img src="Images/AdobeStock_71303000_Preview.jpeg" alt="Lake Manyara" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Lake Manyara Escape</h2>
@@ -666,8 +797,8 @@
 			<!-- Added: Tarangire -->
 			<div class="card">
 				<div class="image-container">
-					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire">
-					<img src="Images/tanzania-wild-sky-NHQOJBbJgdk-unsplash.jpg" alt="Tarangire">
+					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Tarangire" loading="lazy" decoding="async">
+					<img src="Images/tanzania-wild-sky-NHQOJBbJgdk-unsplash.jpg" alt="Tarangire" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Tarangire Expedition</h2>
@@ -697,8 +828,8 @@
 			<!-- Added: Natron -->
 			<div class="card">
 				<div class="image-container">
-					<img src="pexels-balazsimon-15994102.jpg" alt="Lake Natron">
-					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Lake Natron">
+					<img src="pexels-balazsimon-15994102.jpg" alt="Lake Natron" loading="lazy" decoding="async">
+					<img src="Images/ahmed-galal-VQqMACyNfwA-unsplash.jpg" alt="Lake Natron" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Natron Adventure</h2>
@@ -729,8 +860,8 @@
 			<!-- Added: Northern Circuit -->
 			<div class="card">
 				<div class="image-container">
-					<img src="Images/jorge-tung--5Betfvtgso-unsplash.jpg" alt="Northern Circuit">
-					<img src="Images/uzuri-safaris-tanzania-dpoOaYVzMuI-unsplash.jpg" alt="Northern Circuit">
+					<img src="Images/jorge-tung--5Betfvtgso-unsplash.jpg" alt="Northern Circuit" loading="lazy" decoding="async">
+					<img src="Images/uzuri-safaris-tanzania-dpoOaYVzMuI-unsplash.jpg" alt="Northern Circuit" loading="lazy" decoding="async">
 				</div>
 				<div class="card-content">
 					<h2>Northern Circuit Package</h2>
@@ -774,24 +905,65 @@
 	<iframe src="https://www.google.com/maps?q=Arusha+Clock+Tower&output=embed" width="100%" height="300" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 	<!-- Contact -->
-	<section id="contact" class="hidden" style="background:linear-gradient(135deg,#bfff00 0%,#00c3ff 100%);min-height:100vh;display:flex;align-items:center;justify-content:center">
+	<section id="contact" style="background:linear-gradient(135deg,#bfff00 0%,#00c3ff 100%);min-height:100vh;display:flex;align-items:center;justify-content:center">
 		<div class="contact-card" role="form" aria-labelledby="contact-title">
 			<h2 id="contact-title">Contact Us</h2>
-			<form action="https://formspree.io/f/xblgvbol" method="POST" autocomplete="off">
-				<div class="form-group">
-					<input type="text" id="name" name="name" required placeholder=" ">
-					<label for="name">Name</label>
+
+			<!-- Form column -->
+			<form id="contactForm" class="contact-form" action="https://formspree.io/f/xblgvbol" method="POST" novalidate>
+				<input type="hidden" name="_subject" value="Website enquiry — Mwala Tours">
+				<div class="form-row">
+					<div>
+						<label class="visually-hidden" for="name">Name</label>
+						<input id="name" name="name" class="input" type="text" placeholder="Full name" required>
+						<div class="field-error" id="err-name">Please enter your name</div>
+					</div>
+					<div>
+						<label class="visually-hidden" for="email">Email</label>
+						<input id="email" name="email" class="input" type="email" placeholder="Email address" required>
+						<div class="field-error" id="err-email">Please enter a valid email</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<input type="email" id="email" name="email" required placeholder=" ">
-					<label for="email">Email</label>
+
+				<div class="form-row">
+					<div>
+						<label class="visually-hidden" for="phone">Phone</label>
+						<input id="phone" name="phone" class="input" type="tel" placeholder="Phone (optional)" pattern="^[0-9+()\-\s]{6,20}$">
+						<div class="field-error" id="err-phone">Please enter a valid phone number</div>
+					</div>
+					<div>
+						<label class="visually-hidden" for="subject">Subject</label>
+						<input id="subject" name="subject" class="input" type="text" placeholder="Subject" required>
+						<div class="field-error" id="err-subject">Please add a subject</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-					<label for="message">Message</label>
+
+				<div>
+					<label class="visually-hidden" for="message">Message</label>
+					<textarea id="message" name="message" rows="6" placeholder="Write your message..." required></textarea>
+					<div class="field-error" id="err-message">Please enter a message</div>
 				</div>
-				<button type="submit" class="modern-btn">Send Message</button>
+
+				<div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+				<div style="display:flex;gap:12px;align-items:center">
+					<button type="submit" class="btn-send" id="sendBtn">
+						<span id="sendLabel">Send Message</span>
+						<span id="sendSpinner" style="display:none" class="spinner" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn" onclick="document.getElementById('contactForm').reset();document.getElementById('formStatus').style.display='none'">Reset</button>
+				</div>
 			</form>
+
+			<!-- Info column -->
+			<div class="contact-info-box" aria-hidden="false">
+				<p class="meta">Quick contact</p>
+				<p>Email: <a href="mwalatours@gmail.com">mwalatours@gmail.com</a></p>
+				<p>Phone: +255 789021754</p>
+				<p>Phone: +255 699404174</p>
+				<hr style="border:none;border-top:1px dashed rgba(0,0,0,0.06);margin:12px 0">
+				<p style="margin:0;font-size:0.95rem;color:#333">We usually respond within 24 hours. For urgent enquiries call the number above.</p>
+			</div>
 		</div>
 	</section>
 
@@ -801,46 +973,91 @@
 	</footer>
 
 	<!-- Small utility scripts -->
-	<script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PX2BQ8200W"></script>
+	
+	<!-- Move heavy scripts to end of body with defer -->
+	<script defer>
+		// hero background slideshow - optimized
+		(function(){
+			const images=["Mwala tours logo.jpg","omer-salom-gi6T2ktnpnE-unsplash.jpg","pexels-balazsimon-15994102.jpg","jorge-tung-1pZJqQlgpsY-unsplash.jpg","jorge-tung--5Betfvtgso-unsplash.jpg"];
+			let idx=0;
+			const home=document.getElementById('home');
+			
+			// Use requestAnimationFrame for smooth performance
+			function setBg(){
+				if(home) home.style.backgroundImage=`url('${images[idx]}')`;
+			}
+			
+			function nextBg(){
+				idx=(idx+1)%images.length;
+				setBg();
+			}
+			
+			setBg();
+			// Use longer interval to reduce repaints
+			setInterval(nextBg, 4000);
+		})();
+	</script>
+
+	<script defer>
+		// Lazy load sections with Intersection Observer
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '50px'
+		};
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if(entry.isIntersecting){
+					entry.target.style.opacity = '1';
+					observer.unobserve(entry.target);
+				}
+			});
+		}, observerOptions);
+
+		// Observe all sections
+		document.querySelectorAll('section').forEach(section => {
+			section.style.opacity = '0.95';
+			observer.observe(section);
+		});
+	</script>
+
+	<script defer>
+		// All other utility scripts
 		function changeLanguage(lang){
 			if(lang==='es'){ window.location.href='https://translate.google.com/translate?hl=es&sl=en&u='+encodeURIComponent(window.location.href); }
 			else{ window.location.href=window.location.origin+window.location.pathname; }
 		}
 
-		// Toggle visible section (simple single-page feel)
 		function toggleSection(sectionId){
 			const sections=document.querySelectorAll('section');
 			sections.forEach(s => s.id===sectionId ? s.classList.remove('hidden') : s.classList.add('hidden'));
 		}
 
-		// Hamburger toggle and nav link behavior
-		function initHamburger() {
-			const hamburger = document.getElementById('hamburger');
-			const nav = document.querySelector('nav ul');
+		function initHamburger(){
+			const hamburger=document.getElementById('hamburger');
+			const nav=document.querySelector('nav ul');
 			
-			if (hamburger && nav) {
-				hamburger.addEventListener('click', () => {
+			if(hamburger && nav){
+				hamburger.addEventListener('click', ()=>{
 					hamburger.classList.toggle('active');
 					nav.classList.toggle('show');
-					// Prevent body scroll when menu is open
-					document.body.style.overflow = nav.classList.contains('show') ? 'hidden' : '';
+					document.body.style.overflow=nav.classList.contains('show')?'hidden':'';
 				});
 
-				// Close menu when clicking a link
-				nav.querySelectorAll('a').forEach(link => {
-					link.addEventListener('click', () => {
+				nav.querySelectorAll('a').forEach(link=>{
+					link.addEventListener('click', ()=>{
 						hamburger.classList.remove('active');
 						nav.classList.remove('show');
-						document.body.style.overflow = '';
+						document.body.style.overflow='';
 					});
 				});
 
-				// Close menu when clicking outside
-				document.addEventListener('click', (e) => {
-					if (!hamburger.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('show')) {
+				document.addEventListener('click', (e)=>{
+					if(!hamburger.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('show')){
 						hamburger.classList.remove('active');
 						nav.classList.remove('show');
-						document.body.style.overflow = '';
+						document.body.style.overflow='';
 					}
 				});
 			}
@@ -848,5 +1065,99 @@
 
 		document.addEventListener('DOMContentLoaded', initHamburger);
 	</script>
+
+	<!-- ADD: Contact form script -->
+	<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+	const form = document.getElementById('contactForm');
+	if (!form) return;
+
+	const sendBtn = document.getElementById('sendBtn');
+	const sendLabel = document.getElementById('sendLabel');
+	const sendSpinner = document.getElementById('sendSpinner');
+	const statusBox = document.getElementById('formStatus');
+
+	function showStatus(message, type='success'){
+		statusBox.textContent = message;
+		statusBox.className = 'form-status ' + (type==='success' ? 'success':'error');
+		statusBox.style.display = 'block';
+		statusBox.focus && statusBox.focus();
+	}
+
+	function clearErrors(){
+		form.querySelectorAll('.field-error').forEach(el => el.style.display = 'none');
+	}
+
+	function validate(){
+		clearErrors();
+		let ok = true;
+		const name = form.name.value.trim();
+		const email = form.email.value.trim();
+		const subject = form.subject.value.trim();
+		const message = form.message.value.trim();
+		const phone = form.phone.value.trim();
+
+		if (!name){
+			document.getElementById('err-name').style.display = 'block'; ok = false;
+		}
+		if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+			document.getElementById('err-email').style.display = 'block'; ok = false;
+		}
+		if (!subject){
+			document.getElementById('err-subject').style.display = 'block'; ok = false;
+		}
+		if (!message){
+			document.getElementById('err-message').style.display = 'block'; ok = false;
+		}
+		if (phone && !/^[0-9+()\-\s]{6,20}$/.test(phone)){
+			document.getElementById('err-phone').style.display = 'block'; ok = false;
+		}
+		return ok;
+	}
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
+		if (!validate()) return;
+
+		// disable button + show spinner
+		sendBtn.disabled = true;
+		sendLabel.textContent = 'Sending...';
+		sendSpinner.style.display = 'inline-block';
+
+		// send via fetch to the form action (Formspree)
+		const action = form.getAttribute('action') || window.location.href;
+		const data = new FormData(form);
+
+		fetch(action, {
+			method: 'POST',
+			body: data,
+			headers: { 'Accept': 'application/json' }
+		}).then(response => {
+			sendBtn.disabled = false;
+			sendLabel.textContent = 'Send Message';
+			sendSpinner.style.display = 'none';
+			if (response.ok) {
+				form.reset();
+				showStatus('Thank you — your message was sent. We will reply shortly.', 'success');
+			} else {
+				response.json().then(json => {
+					if (json && json.errors) {
+						showStatus(json.errors.map(err => err.message).join(', '), 'error');
+					} else {
+						showStatus('Sorry — there was a problem sending your message. Please try again later.', 'error');
+					}
+				}).catch(()=> {
+					showStatus('Sorry — there was a problem sending your message. Please try again later.', 'error');
+				});
+			}
+		}).catch(() => {
+			sendBtn.disabled = false;
+			sendLabel.textContent = 'Send Message';
+			sendSpinner.style.display = 'none';
+			showStatus('Network error — please check your connection and try again.', 'error');
+		});
+	});
+});
+</script>
 </body>
 </html>

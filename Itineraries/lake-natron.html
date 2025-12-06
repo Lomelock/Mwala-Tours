@@ -1,143 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join Mwala Tours for a spectacular Lake Natron Adventure. Discover one of Tanzania's most unique and beautiful destinations.">
-    <title>Lake Natron Adventure - Mwala Tours</title>
-    <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-    
-        body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          background: #f4f6f8;
-          color: #333;
-          padding: 20px;
-        }
-    
-        header {
-          background: rgb(255, 0, 0);
-          color: yellow;
-          padding: 20px 0;
-          text-align: center;
-          margin-bottom: 30px;
-          padding: 2rem 1rem;
-          width: 100%;
-        }
-
-header h1 {
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
-}
-
-main {
-  max-width: 1000px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-main h2 {
-  font-size: 1.8rem;
-  color: #f0ab0b;
-  margin-bottom: 20px;
-}
-main img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-      border-radius: 10px;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lake Natron Adventure — 5 Days / 4 Nights</title>
+  <style>
+    :root{
+      --accent:#2b8556;
+      --accent-2:#1f6f8b;
+      --muted:#6b7280;
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.85);
+      --maxwidth:900px;
+      --shadow: 0 6px 22px rgba(15,23,42,0.08);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
+    *{box-sizing:border-box;}
+    body{margin:0; background:var(--bg); color:#0f172a;}
+    a{color:var(--accent); text-decoration:none;}
+    img{max-width:100%; display:block; border-radius:12px;}
 
-    h3 {
-      margin-top: 30px;
-      margin-bottom: 10px;
-      color: #444;
-      font-size: 1.3rem;
-    }
+    .container{max-width:var(--maxwidth);margin:32px auto;padding:20px;}
+    header{display:flex;gap:20px;align-items:center;}
+    .logo{width:80px;height:80px;overflow:hidden;border-radius:14px;box-shadow:var(--shadow);}
+    .title h1{margin:0;font-size:1.5rem;}
+    .title p{margin:6px 0 0;color:var(--muted);}
 
-    ul {
-      margin-left: 20px;
-      margin-bottom: 20px;
-      list-style-type: none;
-    }
+    .hero{margin-top:20px;background:var(--card);padding:16px;border-radius:14px;box-shadow:var(--shadow);}
+    .hero img{height:300px;object-fit:cover;width:100%;margin-bottom:12px;}
+    .price-box{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;padding:12px;border-radius:10px;text-align:center;margin-top:12px;}
+    .price-box small{display:block;opacity:0.9;}
+    .btn{padding:10px 16px;border-radius:10px;font-weight:600;background:rgba(0,0,0,0.06);border:none;cursor:pointer;}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow:0 8px 18px rgba(31,111,139,0.18);}
 
-    ul li {
-      margin-bottom: 10px;
-    }
-    .btn-book-now {
-      display: inline-block;
-      background-color: #2e8b57;
-      color: white;
-      padding: 12px 25px;
-      margin-top: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
+    .section{margin-top:24px;}
+    h3{margin-bottom:8px;}
+    .highlights{padding-left:18px;}
+    .day{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);margin-bottom:16px;}
+    .day h4{margin-top:0;}
+    .chip{display:inline-block;background:linear-gradient(90deg,#eef7f3,#f6fbff);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--accent-2);margin-right:8px;margin-top:4px;}
 
-    .btn-book-now:hover {
-      background-color: #246b45;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #888;
-    }
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+    @media(max-width:700px){.gallery{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.gallery{grid-template-columns:1fr;}}
+    footer{margin-top:20px;text-align:center;color:var(--muted);font-size:0.9rem;}
   </style>
-
-
+  <!-- ADDED: favicons (pointing to the existing root logo) -->
+  <link rel="icon" href="../Mwala tours logo.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="../Mwala tours logo.jpg">
+  <meta name="msapplication-TileImage" content="../Mwala tours logo.jpg">
+  <!-- Optional: set a theme color for mobile browsers -->
+  <meta name="theme-color" content="#ff7e5f">
 </head>
 <body>
-
+  <div class="container">
     <header>
-        <h1>Welcome To Mwala Tours</h1>
+      <div class="logo">
+        <img src="../Mwala tours logo.jpg" alt="Mwala Tours logo" loading="lazy" decoding="async"/>
+      </div>
+      <div class="title">
         <h1>Lake Natron Adventure</h1>
+        <p>Discover the stunning beauty of Lake Natron, northern Tanzania's unique photogenic gem.</p>
+      </div>
     </header>
-    <main>
-        <section id="lake-natron">
-            <h2>Discover the Stunning Beauty of Lake Natron</h2>
-            <img src="images/lake-natron.jpg" alt="" width="100">
-            <p>Lake Natron, located in the northern part of Tanzania, is a unique and photogenic destination. Known for its stunning red-colored waters and its rich birdlife, this lake offers one of the most unforgettable adventures in Tanzania.</p>
-            
-            <h3>Tour Details</h3>
-            <ul>
-                <li><strong>Duration:</strong> 5 Days / 4 Nights</li>
-                <li><strong>Price:</strong> Starting from 2,800 per person</li>
-                <li><strong>Accommodation:</strong> Comfortable campsites and lodges</li>
-                <li><strong>Included:</strong> Safari, all meals, transportation, and guided tours</li>
-                <li><strong>Excluded:</strong> Flights and travel insurance</li>
-            </ul>
-            
-            <h3>Itinerary</h3>
-            <ul>
-                <li><strong>Day 1:</strong> Arrival in Arusha and transfer to Lake Natron.</li>
-                <li><strong>Day 2:</strong> Explore Lake Natron and its flamingo breeding grounds.</li>
-                <li><strong>Day 3:</strong> Visit Ol Doinyo Lengai volcano and surrounding landscapes.</li>
-                <li><strong>Day 4:</strong> Morning hike and return to Arusha.</li>
-            </ul>
-            <a href="../booking.html" class="btn-book-now">Book This Tour</a>
-        </section>
-    </main>
+
+    <section class="hero">
+      <img src="../Images/Lake.jpg" alt="Lake Natron red waters" loading="lazy" decoding="async">
+      <div>
+        <h3>Tour Details</h3>
+        <p>Duration: 5 Days / 4 Nights<br>
+        Price: Starting from $2,800 per person<br>
+        Accommodation: Comfortable campsites and lodges</p>
+
+        <div class="highlights">
+          <h4>Included:</h4>
+          <ul>
+            <li>Safari with expert guide</li>
+            <li>All meals and hot beverages</li>
+            <li>Transportation & guided tours</li>
+          </ul>
+          <h4>Excluded:</h4>
+          <ul>
+            <li>International flights & visa fees</li>
+            <li>Travel insurance</li>
+          </ul>
+        </div>
+
+        <div class="price-box">
+          <div style="font-size:1.2rem;font-weight:700;">From $2,800</div>
+          <small>per person</small>
+          <div style="margin-top:8px;">
+            <button class="btn btn-primary" onclick="alert('Contact bookings@mwalatours.com for reservations')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Itinerary</h3>
+
+      <div class="day">
+        <h4>Day 1 — Arrival in Arusha & Transfer to Lake Natron</h4>
+        <p>Arrive at Kilimanjaro International Airport or Arusha Airport and meet your guide. Begin your journey northward towards Lake Natron, taking in scenic landscapes along the way. Check-in at your comfortable campsite or lodge and enjoy an evening briefing and dinner under the stars.</p>
+        <ul class="highlights">
+          <li>Accommodation: Lakeside campsite or lodge</li>
+          <li>Travel time: ~5–6 hours from Arusha</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <h4>Day 2 — Explore Lake Natron & Flamingo Breeding Grounds</h4>
+        <p>Wake up early to witness the flamingos feeding in the lake’s red-tinged waters. Explore the surrounding salt flats and soda shores, rich in birdlife and geological wonders. Photography opportunities abound with the dramatic colors and reflections.</p>
+        <ul class="highlights">
+          <li>Birdwatching & photography</li>
+          <li>Optional evening walk around the lake</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <h4>Day 3 — Visit Ol Doinyo Lengai Volcano</h4>
+        <p>After dinner arround 10pm the journey starts wher you will drive directly to the mountaintain's starting point and leave your car there and the hike may start arround midnigh,the  hike will take more than six hours, whereas you will be back to the car parking around 10am or 12pm when late. There will be targeting of the sunrise but seeing the red lava which can only be seen clearly when is dark.</p>
+        <ul class="highlights">
+          <li>Optional guided Maasai village visit</li>
+          <li>Photo ops at the volcano and scenic landscapes</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <h4>Day 4 — Morning Hike & Lake Exploration</h4>
+        <p>Embark on an early morning hike for sunrise over the lake. Spot more flamingos, other bird species, and perhaps wildlife grazing near the shores. Spend the day exploring nearby natural features before returning to your lodge for relaxation and dinner.</p>
+        <ul class="highlights">
+          <li>Sunrise photography</li>
+          <li>Guided hike and nature walks</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <h4>Day 5 — Return to Arusha & Departure</h4>
+        <p>After breakfast, begin your scenic drive back to Arusha. Depending on flight schedules, you may stop at local markets or viewpoints. Transfer to Kilimanjaro International Airport or Arusha Airport for onward travel.</p>
+        <ul class="highlights">
+          <li>Travel time: ~5–6 hours to Arusha</li>
+          <li>Optional souvenir shopping en route</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Photo Gallery</h3>
+      <div class="gallery">
+        <img src="../Images/pexels-balazsimon-15994102.jpg" alt="Lake Natron red waters" loading="lazy" decoding="async">
+        <img src="../Images/ana-singh-1vOBJZ6228U-unsplash.jpg" alt="Flamingos at Lake Natron" loading="lazy" decoding="async">
+        <img src="../Images/gilai view.jpg" alt="Ol Doinyo Lengai volcano" loading="lazy" decoding="async">
+      </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Mwala Tours. All rights reserved.</p>
+      <p>Price starting from <strong>$2,800</strong> per person. For private departures, single supplements, or custom quotes, contact <a href="mwalatours@gmail.com">mwalatours@gmail.com</a>.</p>
+      <p>All itineraries may change due to weather, wildlife, and local conditions.</p>
     </footer>
-
+  </div>
 </body>
 </html>
-
-
-
-
-
